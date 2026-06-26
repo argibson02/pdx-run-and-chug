@@ -5,7 +5,12 @@ export interface RunEvent {
   notes: string | null
 }
 
-export interface Bar {
+export interface SocialLink {
+  name: string
+  url: string
+}
+
+export interface Location {
   name: string
   address: string
   city: string

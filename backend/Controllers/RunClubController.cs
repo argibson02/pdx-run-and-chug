@@ -21,10 +21,17 @@ public class RunClubController : ControllerBase
         return Ok(schedule);
     }
 
-    [HttpGet("bars")]
-    public async Task<IActionResult> GetBars()
+    [HttpGet("locations")]
+    public async Task<IActionResult> GetLocations()
     {
-        var bars = await _sheetsService.GetBarsAsync();
-        return Ok(bars);
+        var locations = await _sheetsService.GetLocationsAsync();
+        return Ok(locations);
+    }
+
+    [HttpGet("links")]
+    public async Task<IActionResult> GetLinks()
+    {
+        var links = await _sheetsService.GetLinksAsync();
+        return Ok(links);
     }
 }

@@ -51,18 +51,18 @@ public class GoogleSheetsService
         }) ?? [];
     }
 
-    public async Task<List<Bar>> GetBarsAsync()
+    public async Task<List<Location>> GetLocationsAsync()
     {
-        return await _cache.GetOrCreateAsync("bars", async entry =>
+        return await _cache.GetOrCreateAsync("locations", async entry =>
         {
             entry.AbsoluteExpirationRelativeToNow = CacheDuration;
 
             var response = await _sheetsService.Spreadsheets.Values
-                .Get(_spreadsheetId, "Bars!A:G").ExecuteAsync();
+                .Get(_spreadsheetId, "Locations!A:G").ExecuteAsync();
 
             return response.Values?.Skip(1)
                 .Where(row => row.Count >= 7)
-                .Select(row => new Bar
+                .Select(row => new Location
                 {
                     Name = row[0]?.ToString() ?? string.Empty,
                     Address = row[1]?.ToString() ?? string.Empty,
@@ -71,6 +71,26 @@ public class GoogleSheetsService
                     Zip = row[4]?.ToString() ?? string.Empty,
                     Latitude = double.TryParse(row[5]?.ToString(), out var lat) ? lat : 0,
                     Longitude = double.TryParse(row[6]?.ToString(), out var lng) ? lng : 0
+                })
+                .ToList() ?? [];
+        }) ?? [];
+    }
+
+    public async Task<List<SocialLink>> GetLinksAsync()
+    {
+        return await _cache.GetOrCreateAsync("links", async entry =>
+        {
+            entry.AbsoluteExpirationRelativeToNow = CacheDuration;
+
+            var response = await _sheetsService.Spreadsheets.Values
+                .Get(_spreadsheetId, "Links!A:B").ExecuteAsync();
+
+            return response.Values?.Skip(1)
+                .Where(row => row.Count >= 2)
+                .Select(row => new SocialLink
+                {
+                    Name = row[0]?.ToString() ?? string.Empty,
+                    Url = row[1]?.ToString() ?? string.Empty
                 })
                 .ToList() ?? [];
         }) ?? [];

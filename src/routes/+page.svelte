@@ -1,9 +1,9 @@
 <script lang="ts">
-  import type { RunEvent, Bar } from '$lib/types'
+  import type { RunEvent, Location } from '$lib/types'
   import { api } from '$lib/api'
 
   let schedule: RunEvent[] = $state([])
-  let bars: Bar[] = $state([])
+  let locations: Location[] = $state([])
   let loading = $state(true)
   let error = $state('')
 
@@ -28,11 +28,11 @@
   $effect(() => {
     Promise.all([
       api.get<RunEvent[]>('/runclub/schedule'),
-      api.get<Bar[]>('/runclub/bars'),
+      api.get<Location[]>('/runclub/locations'),
     ])
       .then(([s, b]) => {
         schedule = s
-        bars = b
+        locations = b
       })
       .catch(() => {
         error = 'Failed to load data from the backend.'
@@ -115,11 +115,11 @@
           </tr>
         </thead>
         <tbody>
-          {#each bars as bar, i}
+          {#each locations as location, i}
             <tr class="{i % 2 === 0 ? 'bg-white' : 'bg-orange-50'} hover:bg-orange-100 transition-colors">
-              <td class="p-3 px-6 font-medium">{bar.name}</td>
-              <td class="p-3 px-6">{bar.address}</td>
-              <td class="p-3 px-6">{bar.city}, {bar.state} {bar.zip}</td>
+              <td class="p-3 px-6 font-medium">{location.name}</td>
+              <td class="p-3 px-6">{location.address}</td>
+              <td class="p-3 px-6">{location.city}, {location.state} {location.zip}</td>
             </tr>
           {/each}
         </tbody>
