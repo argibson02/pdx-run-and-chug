@@ -1,8 +1,12 @@
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddJsonFile("appsettings.Local.json", optional: true, reloadOnChange: true);
+
 // Add services
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
+builder.Services.AddMemoryCache();
+builder.Services.AddSingleton<Backend.Services.GoogleSheetsService>();
 
 // Allow the Vite dev server to call the API
 builder.Services.AddCors(options =>
