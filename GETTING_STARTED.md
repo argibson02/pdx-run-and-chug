@@ -77,6 +77,36 @@ If using the `mariadb` data source, you need [Podman](https://podman.io/) instal
 
 The default connection string in `appsettings.json` matches the container (`root` / `password` on port 3306).
 
+## Adding a New Config Option
+
+The app reads feature flags from the **Config** tab in Google Sheets. Each row has an `Option` name and a `Status` value (`TRUE` / `FALSE`). To add a new toggle:
+
+1. **Google Sheet** — add a new row to the `Config` tab (e.g. `Show Foo? | TRUE`)
+2. **Backend model** — add a `bool` property to `backend/Models/SiteConfig.cs`:
+   ```csharp
+   public bool ShowFoo { get; set; }
+   ```
+3. **Google Sheets parser** — add an `else if` in `GoogleSheetsService.GetConfigAsync()`:
+   ```csharp
+   else if (option.Equals("Show Foo?", StringComparison.OrdinalIgnoreCase))
+       config.ShowFoo = status.Equals("TRUE", StringComparison.OrdinalIgnoreCase);
+   ```
+4. **Frontend type** — add the field to `SiteConfig` in `src/lib/types.ts`:
+   ```ts
+   export interface SiteConfig {
+     showEvents: boolean
+     showMap: boolean
+     showFoo: boolean
+   }
+   ```
+5. **Frontend default** — update the initial state in `src/routes/+page.svelte`:
+   ```ts
+   let config: SiteConfig = $state({ showEvents: false, showMap: false, showFoo: false })
+   ```
+6. **Frontend usage** — wrap the relevant section with `{#if config.showFoo}`.
+
+All config values default to `false` if the row is missing or the Config tab can't be read.
+
 ## Run Locally
 
 Run each in a separate terminal:

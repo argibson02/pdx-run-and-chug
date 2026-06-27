@@ -47,4 +47,14 @@ public class MariaDbDataService(RunClubDbContext db) : IDataService
             })
             .ToListAsync();
     }
+
+    public Task<List<OtherEvent>> GetOtherEventsAsync()
+    {
+        return Task.FromResult(new List<OtherEvent>());
+    }
+
+    public Task<SiteConfig> GetConfigAsync()
+    {
+        return Task.FromResult(new SiteConfig());
+    }
 }

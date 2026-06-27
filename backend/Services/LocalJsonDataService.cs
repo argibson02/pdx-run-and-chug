@@ -26,6 +26,18 @@ public class LocalJsonDataService(IConfiguration configuration) : IDataService
         return Task.FromResult(data.Links);
     }
 
+    public Task<List<OtherEvent>> GetOtherEventsAsync()
+    {
+        var data = Load();
+        return Task.FromResult(data.OtherEvents);
+    }
+
+    public Task<SiteConfig> GetConfigAsync()
+    {
+        var data = Load();
+        return Task.FromResult(data.Config);
+    }
+
     private SeedData Load()
     {
         var json = File.ReadAllText(_dataPath);
@@ -37,5 +49,7 @@ public class LocalJsonDataService(IConfiguration configuration) : IDataService
         public List<RunEvent> Schedule { get; set; } = [];
         public List<Location> Locations { get; set; } = [];
         public List<SocialLink> Links { get; set; } = [];
+        public List<OtherEvent> OtherEvents { get; set; } = [];
+        public SiteConfig Config { get; set; } = new();
     }
 }

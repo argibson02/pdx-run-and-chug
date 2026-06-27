@@ -27,4 +27,18 @@ public class RunClubController(IDataService dataService) : ControllerBase
         var links = await dataService.GetLinksAsync();
         return Ok(links);
     }
+
+    [HttpGet("other-events")]
+    public async Task<IActionResult> GetOtherEvents()
+    {
+        var events = await dataService.GetOtherEventsAsync();
+        return Ok(events);
+    }
+
+    [HttpGet("config")]
+    public async Task<IActionResult> GetConfig()
+    {
+        var config = await dataService.GetConfigAsync();
+        return Ok(config);
+    }
 }

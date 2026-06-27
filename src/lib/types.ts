@@ -19,3 +19,14 @@ export interface Location {
   latitude: number
   longitude: number
 }
+
+export interface OtherEvent {
+  date: string
+  location: string
+  notes: string | null
+}
+
+export interface SiteConfig {
+  showEvents: boolean
+  showMap: boolean
+}

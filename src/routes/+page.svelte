@@ -1,10 +1,15 @@
 <script lang="ts">
-  import type { RunEvent, Location } from '$lib/types'
+  import type { RunEvent, Location, OtherEvent, SiteConfig } from '$lib/types'
   import { api } from '$lib/api'
   import LocationMap from '$lib/components/LocationMap.svelte'
+  import RunClubTable from '$lib/components/RunClubTable.svelte'
+  import LocationsTable from '$lib/components/LocationsTable.svelte'
+  import OtherEventsTable from '$lib/components/OtherEventsTable.svelte'
 
   let schedule: RunEvent[] = $state([])
   let locations: Location[] = $state([])
+  let otherEvents: OtherEvent[] = $state([])
+  let config: SiteConfig = $state({ showEvents: false, showMap: false })
   let loading = $state(true)
   let error = $state('')
 
@@ -45,11 +50,15 @@
     Promise.all([
       api.get<RunEvent[]>('/runclub/schedule'),
       api.get<Location[]>('/runclub/locations'),
+      api.get<OtherEvent[]>('/runclub/other-events'),
+      api.get<SiteConfig>('/runclub/config'),
     ])
-      .then(([s, b]) => {
+      .then(([s, b, oe, cfg]) => {
         schedule = s
         locations = b
-        console.log(`[Page] Loaded ${s.length} schedule events, ${b.length} locations`)
+        otherEvents = oe
+        config = cfg
+        console.log(`[Page] Loaded ${s.length} schedule events, ${b.length} locations, ${oe.length} other events, showEvents=${cfg.showEvents}`)
       })
       .catch(() => {
         error = 'Failed to load data from the backend.'
@@ -59,32 +68,6 @@
       })
   })
 </script>
-
-{#snippet scheduleTable(events: RunEvent[])}
-  <table class="w-full rounded-lg overflow-hidden shadow-sm">
-    <thead>
-      <tr class="bg-orange-100 text-orange-900">
-        <th class="p-3 px-6 text-left font-semibold">Date</th>
-        <th class="p-3 px-6 text-left font-semibold">Location</th>
-        <th class="p-3 px-6 text-left font-semibold">Status</th>
-        <th class="p-3 px-6 text-left font-semibold">Notes</th>
-      </tr>
-    </thead>
-    <tbody>
-      {#each events as event, i}
-        <tr class="{i % 2 === 0 ? 'bg-white' : 'bg-orange-50'} hover:bg-orange-100 transition-colors">
-          <td class="p-3 px-6">{event.date}</td>
-          <td class="p-3 px-6 font-medium">{event.location || 'TBD'}</td>
-          <td class="p-3 px-6">
-            <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full
-              {(event.status || 'In-Progress') === 'Canceled' ? 'bg-red-100 text-red-800' : (event.status || 'In-Progress') === 'In-Progress' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'}">{event.status || 'In-Progress'}</span>
-          </td>
-          <td class="p-3 px-6 text-gray-500 italic">{event.notes ?? ''}</td>
-        </tr>
-      {/each}
-    </tbody>
-  </table>
-{/snippet}
 
 <main class="max-w-5xl mx-auto mt-10 px-6 pb-12">
   {#if loading}
@@ -97,25 +80,29 @@
         Next Location
       </h2>
       {#if nextEvent}
-        {@render scheduleTable([nextEvent])}
-        <div class="mt-4">
-          <LocationMap location={nextLocation()} label={nextEvent.location} />
-        </div>
+        <RunClubTable events={[nextEvent]} />
+        {#if config.showMap}
+          <div class="mt-4">
+            <LocationMap location={nextLocation()} label={nextEvent.location} />
+          </div>
+        {/if}
       {:else}
         <div class="bg-white rounded-lg shadow-sm p-6 text-center">
           <p class="text-xl font-semibold text-orange-500">Location TBD</p>
           <p class="text-gray-400 mt-1">Check back soon!</p>
         </div>
-        <div class="mt-4">
-          <LocationMap location={null} label="" />
-        </div>
+        {#if config.showMap}
+          <div class="mt-4">
+            <LocationMap location={null} label="" />
+          </div>
+        {/if}
       {/if}
     </section>
 
     {#if upcomingRest.length > 0}
       <section class="mb-10">
         <h2 class="text-2xl font-bold mb-4">Upcoming Locations</h2>
-        {@render scheduleTable(upcomingRest)}
+        <RunClubTable events={upcomingRest} />
       </section>
     {/if}
 
@@ -124,30 +111,20 @@
       {#if past.length === 0}
         <p class="text-gray-400">No previous runs.</p>
       {:else}
-        {@render scheduleTable(past)}
+        <RunClubTable events={past} />
       {/if}
     </section>
 
+    {#if config.showEvents && otherEvents.length > 0}
+      <section class="mb-10">
+        <h2 class="text-2xl font-bold mb-4">Other Events</h2>
+        <OtherEventsTable events={otherEvents} />
+      </section>
+    {/if}
+
     <section class="mb-10">
       <h2 class="text-2xl font-bold mb-4">Locations we go to</h2>
-      <table class="w-full rounded-lg overflow-hidden shadow-sm">
-        <thead>
-          <tr class="bg-orange-100 text-orange-900">
-            <th class="p-3 px-6 text-left font-semibold">Name</th>
-            <th class="p-3 px-6 text-left font-semibold">Address</th>
-            <th class="p-3 px-6 text-left font-semibold">City</th>
-          </tr>
-        </thead>
-        <tbody>
-          {#each locations as location, i}
-            <tr class="{i % 2 === 0 ? 'bg-white' : 'bg-orange-50'} hover:bg-orange-100 transition-colors">
-              <td class="p-3 px-6 font-medium">{location.name}</td>
-              <td class="p-3 px-6">{location.address}</td>
-              <td class="p-3 px-6">{location.city}, {location.state} {location.zip}</td>
-            </tr>
-          {/each}
-        </tbody>
-      </table>
+      <LocationsTable {locations} />
     </section>
   {/if}
 </main>

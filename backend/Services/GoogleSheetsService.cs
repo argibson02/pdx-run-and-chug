@@ -98,4 +98,54 @@ public class GoogleSheetsService : IDataService
                 .ToList() ?? [];
         }) ?? [];
     }
+
+    public async Task<List<OtherEvent>> GetOtherEventsAsync()
+    {
+        return await _cache.GetOrCreateAsync("otherEvents", async entry =>
+        {
+            entry.AbsoluteExpirationRelativeToNow = CacheDuration;
+
+            var response = await _sheetsService.Spreadsheets.Values
+                .Get(_spreadsheetId, "OtherEvents!A:C").ExecuteAsync();
+
+            return response.Values?.Skip(1)
+                .Where(row => row.Count >= 2
+                    && DateOnly.TryParse(row[0]?.ToString(), out _))
+                .Select(row => new OtherEvent
+                {
+                    Date = DateOnly.Parse(Cell(row, 0)),
+                    Location = Cell(row, 1),
+                    Notes = row.ElementAtOrDefault(2)?.ToString()?.Trim()
+                })
+                .ToList() ?? [];
+        }) ?? [];
+    }
+
+    public async Task<SiteConfig> GetConfigAsync()
+    {
+        return await _cache.GetOrCreateAsync("config", async entry =>
+        {
+            entry.AbsoluteExpirationRelativeToNow = CacheDuration;
+
+            var response = await _sheetsService.Spreadsheets.Values
+                .Get(_spreadsheetId, "Config!A:B").ExecuteAsync();
+
+            var config = new SiteConfig();
+
+            if (response.Values is null) return config;
+
+            foreach (var row in response.Values.Skip(1).Where(r => r.Count >= 2))
+            {
+                var option = Cell(row, 0);
+                var status = Cell(row, 1);
+
+                if (option.Equals("Show Events?", StringComparison.OrdinalIgnoreCase))
+                    config.ShowEvents = status.Equals("TRUE", StringComparison.OrdinalIgnoreCase);
+                else if (option.Equals("Show Map?", StringComparison.OrdinalIgnoreCase))
+                    config.ShowMap = status.Equals("TRUE", StringComparison.OrdinalIgnoreCase);
+            }
+
+            return config;
+        }) ?? new SiteConfig();
+    }
 }
