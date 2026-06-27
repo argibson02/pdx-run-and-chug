@@ -6,7 +6,12 @@ builder.Configuration.AddJsonFile("appsettings.Local.json", optional: true, relo
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddMemoryCache();
-builder.Services.AddSingleton<Backend.Services.GoogleSheetsService>();
+
+var dataSource = builder.Configuration["DataSource"]?.ToLowerInvariant();
+if (dataSource == "local")
+    builder.Services.AddSingleton<Backend.Services.IDataService, Backend.Services.LocalJsonDataService>();
+else
+    builder.Services.AddSingleton<Backend.Services.IDataService, Backend.Services.GoogleSheetsService>();
 
 // Allow the Vite dev server to call the API
 builder.Services.AddCors(options =>

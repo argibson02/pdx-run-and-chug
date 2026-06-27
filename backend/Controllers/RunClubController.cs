@@ -7,31 +7,31 @@ namespace Backend.Controllers;
 [Route("api/[controller]")]
 public class RunClubController : ControllerBase
 {
-    private readonly GoogleSheetsService _sheetsService;
+    private readonly IDataService _dataService;
 
-    public RunClubController(GoogleSheetsService sheetsService)
+    public RunClubController(IDataService dataService)
     {
-        _sheetsService = sheetsService;
+        _dataService = dataService;
     }
 
     [HttpGet("schedule")]
     public async Task<IActionResult> GetSchedule()
     {
-        var schedule = await _sheetsService.GetScheduleAsync();
+        var schedule = await _dataService.GetScheduleAsync();
         return Ok(schedule);
     }
 
     [HttpGet("locations")]
     public async Task<IActionResult> GetLocations()
     {
-        var locations = await _sheetsService.GetLocationsAsync();
+        var locations = await _dataService.GetLocationsAsync();
         return Ok(locations);
     }
 
     [HttpGet("links")]
     public async Task<IActionResult> GetLinks()
     {
-        var links = await _sheetsService.GetLinksAsync();
+        var links = await _dataService.GetLinksAsync();
         return Ok(links);
     }
 }

@@ -25,6 +25,27 @@ Create `backend/appsettings.Local.json` (this file is gitignored):
 }
 ```
 
+## Data Sources
+
+The backend supports two data sources, controlled by the `DataSource` setting:
+
+- **`"google"`** (default) — pulls live data from Google Sheets. This is the production data source.
+- **`"local"`** — reads from a local JSON file at `backend/Data/seed.json`. This is for local development of the application without an internet connection or API key.
+
+To switch, set `DataSource` in `backend/appsettings.json` or `backend/appsettings.Local.json`:
+
+```json
+{
+  "DataSource": "local"
+}
+```
+
+Or pass it as an environment variable:
+
+```bash
+DataSource=local dotnet run
+```
+
 ## Run Locally
 
 Run each in a separate terminal:

@@ -5,7 +5,7 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace Backend.Services;
 
-public class GoogleSheetsService
+public class GoogleSheetsService : IDataService
 {
     private readonly SheetsService _sheetsService;
     private readonly string _spreadsheetId;

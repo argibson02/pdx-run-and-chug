@@ -1,0 +1,587 @@
+{
+  "schedule": [
+    {
+      "date": "2025-11-19",
+      "location": "Living Haus",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2025-11-26",
+      "location": "Rogue",
+      "status": "Confirmed",
+      "notes": "Thanksgiving Week"
+    },
+    {
+      "date": "2025-12-03",
+      "location": "Level",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2025-12-10",
+      "location": "Baerlic",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2025-12-17",
+      "location": "Crux",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2025-12-24",
+      "location": "The Vern",
+      "status": "Confirmed",
+      "notes": "Christmas"
+    },
+    {
+      "date": "2025-12-31",
+      "location": "Baerlic",
+      "status": "Confirmed",
+      "notes": "New Year's Day"
+    },
+    {
+      "date": "2026-01-07",
+      "location": "Bye & Bye",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-01-14",
+      "location": "Belmont Station",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-01-21",
+      "location": "Rogue",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-01-28",
+      "location": "Living Haus",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-02-04",
+      "location": "Paydirt",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-02-11",
+      "location": "Level",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-02-18",
+      "location": "Bye & Bye",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-02-25",
+      "location": "Crux",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-03-04",
+      "location": "Baerlic",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-03-11",
+      "location": "Rogue",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-03-18",
+      "location": "Imperial",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-03-25",
+      "location": "Belmont Station",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-04-01",
+      "location": "Living Haus",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-04-08",
+      "location": "Paydirt",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-04-15",
+      "location": "Level",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-04-22",
+      "location": "Baerlic",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-04-29",
+      "location": "Hawthorne Asylum",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-05-06",
+      "location": "BeerMongers",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-05-13",
+      "location": "Bye & Bye",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-05-20",
+      "location": "Rogue",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-05-27",
+      "location": "Imperial",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-06-03",
+      "location": "Baerlic",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-06-10",
+      "location": "Level",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-06-17",
+      "location": "Living Haus",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-06-24",
+      "location": "Hawthorne Asylum",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-07-01",
+      "location": "LOCAL Bye & Bye",
+      "status": "Confirmed",
+      "notes": "test"
+    },
+    {
+      "date": "2026-07-08",
+      "location": "Paydirt",
+      "status": "In-Progress",
+      "notes": null
+    },
+    {
+      "date": "2026-07-15",
+      "location": "BeerMongers",
+      "status": "Canceled",
+      "notes": null
+    },
+    {
+      "date": "2026-07-22",
+      "location": "Gorges",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-07-29",
+      "location": "Baerlic",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-08-05",
+      "location": "Rogue",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-08-12",
+      "location": "Living Haus",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-08-19",
+      "location": "Bye & Bye",
+      "status": "Confirmed",
+      "notes": "Lita's last day"
+    },
+    {
+      "date": "2026-08-26",
+      "location": "Imperial",
+      "status": "Confirmed",
+      "notes": "Michaela's Bday"
+    },
+    {
+      "date": "2026-09-02",
+      "location": "Hawthorne Asylum",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-09-09",
+      "location": "Level",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-09-16",
+      "location": "Paydirt",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-09-23",
+      "location": "Baerlic",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-09-30",
+      "location": "Living Haus",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-10-07",
+      "location": "BeerMongers",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-10-14",
+      "location": "Gorges",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-10-21",
+      "location": "Bye & Bye",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-10-28",
+      "location": "Gorges",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-11-04",
+      "location": "Belmont Station",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-11-11",
+      "location": "Imperial",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-11-18",
+      "location": "Imperial",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-11-25",
+      "location": "Rogue",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-12-02",
+      "location": "Baerlic",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-12-09",
+      "location": "Living Haus",
+      "status": "Confirmed",
+      "notes": "Thanksgiving Week"
+    },
+    {
+      "date": "2026-12-16",
+      "location": "Level",
+      "status": "Confirmed",
+      "notes": "Cookie Swap"
+    },
+    {
+      "date": "2026-12-23",
+      "location": "Space Room",
+      "status": "Confirmed",
+      "notes": "Collab run at Tabor with Dirt Dorks Trail Club"
+    },
+    {
+      "date": "2026-12-30",
+      "location": "Paydirt",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2027-01-06",
+      "location": "The Vern",
+      "status": "Confirmed",
+      "notes": "Christmas Eve"
+    },
+    {
+      "date": "2027-01-13",
+      "location": "BeerMongers",
+      "status": "Confirmed",
+      "notes": "New Year's Eve"
+    },
+    {
+      "date": "2027-01-20",
+      "location": "Bye & Bye",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2027-01-27",
+      "location": "Belmont Station",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2027-02-03",
+      "location": "Bye & Bye",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2027-02-10",
+      "location": "Belmont Station",
+      "status": "Confirmed",
+      "notes": "The day after Robin's bday"
+    },
+    {
+      "date": "2027-02-17",
+      "location": "Living Haus",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2027-02-24",
+      "location": "Baerlic",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2027-03-03",
+      "location": "Living Haus",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2027-03-10",
+      "location": "Baerlic",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-02-04",
+      "location": "Level",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-02-11",
+      "location": "Living Haus",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-02-18",
+      "location": "Level",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-02-11",
+      "location": "Paydirt",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-02-18",
+      "location": "Brooklyn Carreta",
+      "status": "Confirmed",
+      "notes": null
+    },
+    {
+      "date": "2026-02-25",
+      "location": "BeerMongers",
+      "status": "Confirmed",
+      "notes": null
+    }
+  ],
+  "locations": [
+    {
+      "name": "Baerlic SE",
+      "address": "2239 SE 11th Ave",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97214",
+      "latitude": 45.5067,
+      "longitude": -122.6551
+    },
+    {
+      "name": "BeerMongers",
+      "address": "2415 SE 11th Ave",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97202",
+      "latitude": 45.5044,
+      "longitude": -122.6551
+    },
+    {
+      "name": "Belmont Station",
+      "address": "4500 SE Stark St",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97215",
+      "latitude": 45.5191,
+      "longitude": -122.6154
+    },
+    {
+      "name": "Brooklyn Carreta",
+      "address": "4534 SE McLoughlin Blvd",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97202",
+      "latitude": 45.4737,
+      "longitude": -122.6475
+    },
+    {
+      "name": "Bye & Bye",
+      "address": "1011 NE Alberta St",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97211",
+      "latitude": 45.5593,
+      "longitude": -122.6552
+    },
+    {
+      "name": "Gorges",
+      "address": "2724 SE Ankeny St",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97214",
+      "latitude": 45.5226,
+      "longitude": -122.6367
+    },
+    {
+      "name": "Hawthorne Asylum",
+      "address": "1080 SE Madison St",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97214",
+      "latitude": 45.5116,
+      "longitude": -122.6561
+    },
+    {
+      "name": "Imperial",
+      "address": "3090 SE Division St",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97202",
+      "latitude": 45.5054,
+      "longitude": -122.6335
+    },
+    {
+      "name": "Level 3",
+      "address": "1447 NE Sandy Blvd",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97232",
+      "latitude": 45.5244,
+      "longitude": -122.652
+    },
+    {
+      "name": "Living Haus",
+      "address": "628 SE Belmont St",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97214",
+      "latitude": 45.5164,
+      "longitude": -122.6562
+    },
+    {
+      "name": "Paydirt",
+      "address": "2724 NE Pacific St",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97232",
+      "latitude": 45.5296,
+      "longitude": -122.6381
+    },
+    {
+      "name": "Space Room",
+      "address": "4800 SE Hawthorne Blvd",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97215",
+      "latitude": 45.5121,
+      "longitude": -122.613
+    },
+    {
+      "name": "The Vern",
+      "address": "2622 SE Belmont St",
+      "city": "Portland",
+      "state": "OR",
+      "zip": "97214",
+      "latitude": 45.5168,
+      "longitude": -122.6389
+    }
+  ],
+  "links": [
+    {
+      "name": "Strava",
+      "url": "https://strava.app.link/ynrdlIQui4b"
+    },
+    {
+      "name": "MeetUp",
+      "url": "https://meetup.com/portland-fun-run?member_id=382819808"
+    },
+    {
+      "name": "Instagram",
+      "url": "none"
+    }
+  ]
+}
