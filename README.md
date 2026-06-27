@@ -8,7 +8,7 @@ The app pulls schedule and location data from a Google Sheet, so organizers can 
 
 - **Frontend:** SvelteKit (Svelte 5), Tailwind CSS, TypeScript
 - **Backend:** .NET 10, ASP.NET Core Web API
-- **Data:** Google Sheets API with 1-hour cache
+- **Data:** Google Sheets API (production), local JSON or MariaDB (development)
 
 ## Setup
 
