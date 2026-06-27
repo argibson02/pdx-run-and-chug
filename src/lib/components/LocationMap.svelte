@@ -17,11 +17,12 @@
     import('leaflet').then(async (L) => {
       import('leaflet/dist/leaflet.css')
 
-      const iconUrl = (await import('leaflet/dist/images/marker-icon.png?url')).default
-      const iconRetinaUrl = (await import('leaflet/dist/images/marker-icon-2x.png?url')).default
-      const shadowUrl = (await import('leaflet/dist/images/marker-shadow.png?url')).default
-
-      L.default.Icon.Default.mergeOptions({ iconUrl, iconRetinaUrl, shadowUrl })
+      L.default.Icon.Default.mergeOptions({
+        iconUrl: '/marker-icon.png',
+        iconRetinaUrl: '/marker-icon-2x.png',
+        shadowUrl: '/marker-shadow.png',
+        imagePath: '',
+      })
 
       const center: [number, number] =
         location && location.latitude && location.longitude
