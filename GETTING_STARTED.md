@@ -3,13 +3,26 @@
 ## Prerequisites
 
 - [Node.js 22+](https://nodejs.org/)
-- [.NET 8.0 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [.NET 10.0 SDK](https://dotnet.microsoft.com/download/dotnet/10.0)
+- A Google Sheets API key ([setup guide](https://console.cloud.google.com/apis/library/sheets.googleapis.com))
 
 ## Install Dependencies
 
 ```powershell
 npm install
 cd backend; dotnet restore; cd ..
+```
+
+## Configure API Key
+
+Create `backend/appsettings.Local.json` (this file is gitignored):
+
+```json
+{
+  "GoogleSheets": {
+    "ApiKey": "your_google_api_key_here"
+  }
+}
 ```
 
 ## Run Locally
@@ -30,7 +43,7 @@ npm run dev:frontend
 
 - Frontend: http://localhost:5173
 - Backend: http://localhost:5000
-- Swagger UI: http://localhost:5000/swagger
+- OpenAPI spec: http://localhost:5000/openapi/v1.json
 
 The Vite dev server proxies `/api` requests to the backend automatically.
 

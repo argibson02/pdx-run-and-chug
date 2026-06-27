@@ -1,42 +1,15 @@
-# sv
+# PDX Run & Chug
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+A web app for the PDX Run & Chug run club — a weekly run club in Portland, OR that meets at different bars and breweries around the city.
 
-## Creating a project
+The app pulls schedule and location data from a Google Sheet, so organizers can update the schedule without touching any code.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Tech Stack
 
-```sh
-# create a new project
-npx sv create my-app
-```
+- **Frontend:** SvelteKit (Svelte 5), Tailwind CSS, TypeScript
+- **Backend:** .NET 10, ASP.NET Core Web API
+- **Data:** Google Sheets API with 1-hour cache
 
-To recreate this project with the same configuration:
+## Setup
 
-```sh
-# recreate this project
-npx sv create --template minimal --types ts --add prettier eslint vitest="usages:unit,component" playwright tailwindcss="plugins:typography" storybook --install npm ./
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+See [GETTING_STARTED.md](GETTING_STARTED.md) for prerequisites, installation, and running locally.
