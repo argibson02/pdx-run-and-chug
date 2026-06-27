@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Backend.Models;
+namespace Backend.Data.Entities;
 
 [Table("locations")]
 public class LocationEntity

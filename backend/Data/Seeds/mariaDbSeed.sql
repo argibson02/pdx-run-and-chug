@@ -1,5 +1,5 @@
 -- Seed script for MariaDB local development
--- Usage: mysql -u root -p runclub < seed.sql
+-- Usage: mysql -u root -p runclub < mariaDbSeed.sql
 
 CREATE DATABASE IF NOT EXISTS runclub;
 USE runclub;

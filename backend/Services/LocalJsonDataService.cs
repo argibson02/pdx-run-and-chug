@@ -5,7 +5,7 @@ namespace Backend.Services;
 
 public class LocalJsonDataService(IConfiguration configuration) : IDataService
 {
-    private readonly string _dataPath = configuration["LocalData:Path"] ?? "Data/seed.json";
+    private readonly string _dataPath = configuration["LocalData:Path"] ?? "Data/Seeds/localJsonSeed.json";
     private static readonly JsonSerializerOptions JsonOptions = new() { PropertyNameCaseInsensitive = true };
 
     public Task<List<RunEvent>> GetScheduleAsync()

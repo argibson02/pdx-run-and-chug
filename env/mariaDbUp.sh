@@ -28,5 +28,5 @@ for i in {1..10}; do
 done
 
 echo "Seeding database..."
-podman exec -i $CONTAINER mariadb --user=root --password="$ROOT_PASSWORD" < backend/Data/seed.sql
+podman exec -i $CONTAINER mariadb --user=root --password="$ROOT_PASSWORD" < backend/Data/Seeds/mariaDbSeed.sql
 echo "Done."

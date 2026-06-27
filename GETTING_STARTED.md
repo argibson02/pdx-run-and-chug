@@ -18,7 +18,7 @@ cd backend; dotnet restore; cd ..
 The backend supports three data sources, controlled by the `DataSource` setting:
 
 - **`"google"`** (default) — pulls live data from Google Sheets. This is the production data source.
-- **`"local"`** — reads from a local JSON file at `backend/Data/seed.json`. This is for local development of the application without an internet connection or API key.
+- **`"local"`** — reads from a local JSON file at `backend/Data/Seeds/localJsonSeed.json`. This is for local development of the application without an internet connection or API key.
 - **`"mariadb"`** — reads from a local MariaDB database. This is for local development of the application without an internet connection or API key, and allows testing with a real database.
 
 To switch, set `DataSource` in `backend/appsettings.json` or `backend/appsettings.Local.json`:
@@ -52,7 +52,7 @@ This is the default and production data source. Requires an API key and internet
 
 ### Local JSON Setup
 
-No setup required. Uses the seed data file at `backend/Data/seed.json`. Just set the data source:
+No setup required. Uses the seed data file at `backend/Data/Seeds/localJsonSeed.json`. Just set the data source:
 
 ```json
 {
@@ -66,7 +66,7 @@ If using the `mariadb` data source, you need [Podman](https://podman.io/) instal
 
 1. From the project root, run the environment script to start a MariaDB container and seed the database:
    ```bash
-   ./env/envUp.sh
+   ./env/mariaDbUp.sh
    ```
 2. Set `DataSource` to `mariadb` in `backend/appsettings.Local.json`:
    ```json
