@@ -3,15 +3,10 @@ using Backend.Models;
 
 namespace Backend.Services;
 
-public class LocalJsonDataService : IDataService
+public class LocalJsonDataService(IConfiguration configuration) : IDataService
 {
-    private readonly string _dataPath;
+    private readonly string _dataPath = configuration["LocalData:Path"] ?? "Data/seed.json";
     private static readonly JsonSerializerOptions JsonOptions = new() { PropertyNameCaseInsensitive = true };
-
-    public LocalJsonDataService(IConfiguration configuration)
-    {
-        _dataPath = configuration["LocalData:Path"] ?? "Data/seed.json";
-    }
 
     public Task<List<RunEvent>> GetScheduleAsync()
     {

@@ -3,11 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Data;
 
-public class RunClubDbContext : DbContext
+public class RunClubDbContext(DbContextOptions<RunClubDbContext> options) : DbContext(options)
 {
-    public RunClubDbContext(DbContextOptions<RunClubDbContext> options) : base(options) { }
 
-    public DbSet<RunEventEntity> Schedule => Set<RunEventEntity>();
-    public DbSet<LocationEntity> Locations => Set<LocationEntity>();
-    public DbSet<SocialLinkEntity> Links => Set<SocialLinkEntity>();
+    public static DbSet<RunEventEntity> Schedule => Set<RunEventEntity>();
+    public static DbSet<LocationEntity> Locations => Set<LocationEntity>();
+    public static DbSet<SocialLinkEntity> Links => Set<SocialLinkEntity>();
 }

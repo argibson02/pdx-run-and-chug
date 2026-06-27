@@ -5,33 +5,26 @@ namespace Backend.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class RunClubController : ControllerBase
+public class RunClubController(IDataService dataService) : ControllerBase
 {
-    private readonly IDataService _dataService;
-
-    public RunClubController(IDataService dataService)
-    {
-        _dataService = dataService;
-    }
-
     [HttpGet("schedule")]
     public async Task<IActionResult> GetSchedule()
     {
-        var schedule = await _dataService.GetScheduleAsync();
+        var schedule = await dataService.GetScheduleAsync();
         return Ok(schedule);
     }
 
     [HttpGet("locations")]
     public async Task<IActionResult> GetLocations()
     {
-        var locations = await _dataService.GetLocationsAsync();
+        var locations = await dataService.GetLocationsAsync();
         return Ok(locations);
     }
 
     [HttpGet("links")]
     public async Task<IActionResult> GetLinks()
     {
-        var links = await _dataService.GetLinksAsync();
+        var links = await dataService.GetLinksAsync();
         return Ok(links);
     }
 }

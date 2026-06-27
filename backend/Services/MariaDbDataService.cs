@@ -4,18 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Services;
 
-public class MariaDbDataService : IDataService
+public class MariaDbDataService(RunClubDbContext db) : IDataService
 {
-    private readonly RunClubDbContext _db;
-
-    public MariaDbDataService(RunClubDbContext db)
-    {
-        _db = db;
-    }
-
     public async Task<List<RunEvent>> GetScheduleAsync()
     {
-        return await _db.Schedule
+        return await db.Schedule
             .OrderBy(e => e.Date)
             .Select(e => new RunEvent
             {
@@ -29,7 +22,7 @@ public class MariaDbDataService : IDataService
 
     public async Task<List<Location>> GetLocationsAsync()
     {
-        return await _db.Locations
+        return await db.Locations
             .OrderBy(l => l.Name)
             .Select(l => new Location
             {
@@ -46,7 +39,7 @@ public class MariaDbDataService : IDataService
 
     public async Task<List<SocialLink>> GetLinksAsync()
     {
-        return await _db.Links
+        return await db.Links
             .Select(l => new SocialLink
             {
                 Name = l.Name,
