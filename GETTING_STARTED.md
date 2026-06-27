@@ -9,7 +9,7 @@
 ## Install Dependencies
 
 ```powershell
-npm install
+pnpm install
 cd backend; dotnet restore; cd ..
 ```
 
@@ -84,13 +84,13 @@ Run each in a separate terminal:
 **Backend** (terminal 1):
 
 ```powershell
-npm run dev:backend
+pnpm run dev:backend
 ```
 
 **Frontend** (terminal 2):
 
 ```powershell
-npm run dev:frontend
+pnpm run dev:frontend
 ```
 
 - Frontend: http://localhost:5173
@@ -103,10 +103,10 @@ The Vite dev server proxies `/api` requests to the backend automatically.
 
 | Command | Description |
 | --- | --- |
-| `npm run build` | Production build |
-| `npm run preview` | Preview production build |
-| `npm run check` | TypeScript type checking |
-| `npm run lint` | ESLint + Prettier |
-| `npm run format` | Auto-format code |
-| `npm run test:unit` | Unit tests (Vitest) |
-| `npm run test:e2e` | E2E tests (Playwright) |
+| `pnpm run build` | Production build |
+| `pnpm run preview` | Preview production build |
+| `pnpm run check` | TypeScript type checking |
+| `pnpm run lint` | ESLint + Prettier |
+| `pnpm run format` | Auto-format code |
+| `pnpm run test:unit` | Unit tests (Vitest) |
+| `pnpm run test:e2e` | E2E tests (Playwright) |

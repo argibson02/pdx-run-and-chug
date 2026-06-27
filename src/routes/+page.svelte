@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { RunEvent, Location } from '$lib/types'
   import { api } from '$lib/api'
+  import LocationMap from '$lib/components/LocationMap.svelte'
 
   let schedule: RunEvent[] = $state([])
   let locations: Location[] = $state([])
@@ -17,6 +18,12 @@
 
   let nextEvent = $derived(sorted[0] ?? null)
   let upcomingRest = $derived(sorted.slice(1, 21))
+
+  let nextLocation = $derived(() => {
+    if (!nextEvent) return null
+    const name = nextEvent.location.toLowerCase()
+    return locations.find((l) => l.name.toLowerCase().includes(name) || name.includes(l.name.toLowerCase())) ?? null
+  })
 
   let past = $derived(
     schedule
@@ -80,10 +87,16 @@
       </h2>
       {#if nextEvent}
         {@render scheduleTable([nextEvent])}
+        <div class="mt-4">
+          <LocationMap location={nextLocation()} label={nextEvent.location} />
+        </div>
       {:else}
         <div class="bg-white rounded-lg shadow-sm p-6 text-center">
           <p class="text-xl font-semibold text-orange-500">Location TBD</p>
           <p class="text-gray-400 mt-1">Check back soon!</p>
+        </div>
+        <div class="mt-4">
+          <LocationMap location={null} label="" />
         </div>
       {/if}
     </section>

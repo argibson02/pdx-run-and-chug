@@ -28,6 +28,9 @@ public class GoogleSheetsService : IDataService
         });
     }
 
+    private static string Cell(IList<object> row, int index) =>
+        (row.ElementAtOrDefault(index)?.ToString() ?? string.Empty).Trim();
+
     public async Task<List<RunEvent>> GetScheduleAsync()
     {
         return await _cache.GetOrCreateAsync("schedule", async entry =>
@@ -42,10 +45,10 @@ public class GoogleSheetsService : IDataService
                     && DateOnly.TryParse(row[0]?.ToString(), out _))
                 .Select(row => new RunEvent
                 {
-                    Date = DateOnly.Parse(row[0]!.ToString()!),
-                    Location = row.ElementAtOrDefault(1)?.ToString() ?? string.Empty,
-                    Status = row.ElementAtOrDefault(2)?.ToString() ?? string.Empty,
-                    Notes = row.ElementAtOrDefault(3)?.ToString()
+                    Date = DateOnly.Parse(Cell(row, 0)),
+                    Location = Cell(row, 1),
+                    Status = Cell(row, 2),
+                    Notes = row.ElementAtOrDefault(3)?.ToString()?.Trim()
                 })
                 .ToList() ?? [];
         }) ?? [];
@@ -64,13 +67,13 @@ public class GoogleSheetsService : IDataService
                 .Where(row => row.Count >= 7)
                 .Select(row => new Location
                 {
-                    Name = row[0]?.ToString() ?? string.Empty,
-                    Address = row[1]?.ToString() ?? string.Empty,
-                    City = row[2]?.ToString() ?? string.Empty,
-                    State = row[3]?.ToString() ?? string.Empty,
-                    Zip = row[4]?.ToString() ?? string.Empty,
-                    Latitude = double.TryParse(row[5]?.ToString(), out var lat) ? lat : 0,
-                    Longitude = double.TryParse(row[6]?.ToString(), out var lng) ? lng : 0
+                    Name = Cell(row, 0),
+                    Address = Cell(row, 1),
+                    City = Cell(row, 2),
+                    State = Cell(row, 3),
+                    Zip = Cell(row, 4),
+                    Latitude = double.TryParse(Cell(row, 5), out var lat) ? lat : 0,
+                    Longitude = double.TryParse(Cell(row, 6), out var lng) ? lng : 0
                 })
                 .ToList() ?? [];
         }) ?? [];
@@ -89,8 +92,8 @@ public class GoogleSheetsService : IDataService
                 .Where(row => row.Count >= 2)
                 .Select(row => new SocialLink
                 {
-                    Name = row[0]?.ToString() ?? string.Empty,
-                    Url = row[1]?.ToString() ?? string.Empty
+                    Name = Cell(row, 0),
+                    Url = Cell(row, 1)
                 })
                 .ToList() ?? [];
         }) ?? [];
