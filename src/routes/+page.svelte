@@ -20,9 +20,18 @@
   let upcomingRest = $derived(sorted.slice(1, 21))
 
   let nextLocation = $derived(() => {
-    if (!nextEvent) return null
+    if (!nextEvent || !nextEvent.location) {
+      console.log('[Page] No next event or location — location TBD')
+      return null
+    }
     const name = nextEvent.location.toLowerCase()
-    return locations.find((l) => l.name.toLowerCase().includes(name) || name.includes(l.name.toLowerCase())) ?? null
+    const match = locations.find((l) => l.name.toLowerCase().includes(name) || name.includes(l.name.toLowerCase())) ?? null
+    if (match) {
+      console.log(`[Page] Next event "${nextEvent.location}" on ${nextEvent.date} matched location "${match.name}" (${match.latitude}, ${match.longitude})${nextEvent.notes ? ` — ${nextEvent.notes}` : ''}`)
+    } else {
+      console.log(`[Page] Next event "${nextEvent.location}" — no matching location found in directory`)
+    }
+    return match
   })
 
   let past = $derived(
@@ -40,6 +49,7 @@
       .then(([s, b]) => {
         schedule = s
         locations = b
+        console.log(`[Page] Loaded ${s.length} schedule events, ${b.length} locations`)
       })
       .catch(() => {
         error = 'Failed to load data from the backend.'
@@ -64,9 +74,10 @@
       {#each events as event, i}
         <tr class="{i % 2 === 0 ? 'bg-white' : 'bg-orange-50'} hover:bg-orange-100 transition-colors">
           <td class="p-3 px-6">{event.date}</td>
-          <td class="p-3 px-6 font-medium">{event.location}</td>
+          <td class="p-3 px-6 font-medium">{event.location || 'TBD'}</td>
           <td class="p-3 px-6">
-            <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-2 py-0.5 rounded-full">{event.status}</span>
+            <span class="inline-block text-xs font-semibold px-2 py-0.5 rounded-full
+              {(event.status || 'In-Progress') === 'Canceled' ? 'bg-red-100 text-red-800' : (event.status || 'In-Progress') === 'In-Progress' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'}">{event.status || 'In-Progress'}</span>
           </td>
           <td class="p-3 px-6 text-gray-500 italic">{event.notes ?? ''}</td>
         </tr>

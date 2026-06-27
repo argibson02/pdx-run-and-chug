@@ -24,6 +24,12 @@
         imagePath: '',
       })
 
+      if (location) {
+        console.log(`[Map] Showing: ${label} at ${location.latitude}, ${location.longitude} (${location.address})`)
+      } else {
+        console.log('[Map] No location found — showing Portland placeholder')
+      }
+
       const center: [number, number] =
         location && location.latitude && location.longitude
           ? [location.latitude, location.longitude]

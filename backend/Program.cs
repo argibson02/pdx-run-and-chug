@@ -62,7 +62,10 @@ if (app.Environment.IsDevelopment())
     app.UseCors("ViteDev");
 }
 
-app.UseHttpsRedirection();
+if (!app.Environment.IsDevelopment())
+{
+    app.UseHttpsRedirection();
+}
 app.UseRateLimiter();
 app.UseAuthorization();
 app.MapControllers().RequireRateLimiting("fixed");
